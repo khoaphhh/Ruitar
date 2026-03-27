@@ -10,7 +10,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TouchDetector(
-        onUpdate: (points) {          
+        onUpdate: (points) {  
+          points.forEach((id, trail) {
+            // trail là List<Offset> chứa 15 điểm
+            print("Vị trí $id: ${trail.toString()}");   
+          });     
         },
       ),
     );
