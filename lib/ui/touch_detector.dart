@@ -79,13 +79,14 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
       onPointerCancel: _handlePointerUp,
 
       child: Container(
-        color: Color.fromARGB(255,228,244,252),
+        //color: Color.fromARGB(255,228,244,252),
+        color: Color.fromARGB(255, 0, 0, 0),
         child: CustomPaint(
           painter: TrailPainter(
             fingers: _fingers,
             activePointers: _activePointers,
             repaint: _ticker, // Ticker ép Painter vẽ lại liên tục 60fps
-            timeToLive: 200,  // tốc độ shrink của đuôi
+            timeToLive: 300,  //set tốc độ shrink của đuôi
           ),
           size: Size.infinite,
         ),

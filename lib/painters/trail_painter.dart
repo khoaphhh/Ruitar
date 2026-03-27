@@ -5,7 +5,7 @@ class TrailPainter extends CustomPainter {
   final Map<int, List<TrailPoint>> fingers;
   final Set<int> activePointers;
   final int timeToLive;
-  final double MAX_CURSOR_SIZE = 20;
+  final double MAX_CURSOR_SIZE = 20;  //set độ lớn cursor
 
   TrailPainter({
     required this.fingers,
@@ -42,11 +42,15 @@ class TrailPainter extends CustomPainter {
           point.creationTime = currentTime; 
           final Gradient headGradient = RadialGradient(
             colors: [
+              // const Color.fromARGB(255,251,251,251),
+              // const Color.fromARGB(255,255,163,34),
+              // const Color.fromARGB(255,187,20,20),
+              // const Color.fromARGB(255, 0, 58, 107),
               const Color.fromARGB(255,251,251,251),
-              const Color.fromARGB(255,255,163,34),
-              const Color.fromARGB(255,187,20,20),
-              const Color.fromARGB(255, 0, 58, 107),
+              const Color.fromARGB(150,251,251,251),
+              const Color.fromARGB(0,251,251,251),
             ],
+            //stops: const [0.0, 0.5, 1.0], 
           );
 
           paint.shader = headGradient.createShader(
@@ -74,8 +78,9 @@ class TrailPainter extends CustomPainter {
           // paint.shader = trailGradient.createShader(
           //   Rect.fromCircle(center: point.position, radius: currentRadius),
           // );
-          paint.color = const Color.fromARGB(255, 0, 58, 107);
-          canvas.drawCircle(point.position, currentRadius, paint);
+          int transparency = (100 * lifeLeft).truncate();
+          paint.color = Color.fromARGB(150,251,251,251);
+          canvas.drawCircle(point.position, 3, paint);
         }
       }
     }
