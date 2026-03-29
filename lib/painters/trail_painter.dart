@@ -5,7 +5,7 @@ class TrailPainter extends CustomPainter {
   final Map<int, List<TrailPoint>> fingers;
   final Set<int> activePointers;
   final int timeToLive;
-  final double MAX_CURSOR_SIZE = 20;  //set độ lớn cursor
+  final double MAX_CURSOR_SIZE = 30;  //set độ lớn cursor
 
   TrailPainter({
     required this.fingers,
