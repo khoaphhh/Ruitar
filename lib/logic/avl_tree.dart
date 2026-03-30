@@ -3,25 +3,15 @@ import 'dart:math';
 //import 'dart:collection';         //for using queue
 
 class AVLTree<K extends Comparable<K>, T> {
-  int size;   //number of nodes
-  AVLNode? root;
+  int _size;   //number of nodes
+  AVLNode? _root;
 
-  AVLTree () : root = null, size = 0;
-
-  int getHeight(AVLNode? node) {            //node đứng riêng có height = 1
-    if (node != null) {return node.height;}
-    else {return 0;}
-  }
-
-  int getBalanceFactor (AVLNode? node) {
-    if (node == null) return 0;
-    return getHeight(node.pRight) - getHeight(node.pLeft);  //có thể > 1 và < -1
-  }
+  AVLTree () : _root = null, _size = 0;
 
   void updateNode(AVLNode? node) {    //cập nhật chỉ số của node
     if (node == null) return;
-    int hLeft = getHeight(node.pLeft);
-    int hRight = getHeight(node.pRight);
+    int hLeft = node.pLeft?.getNodeHeight() ?? 0;
+    int hRight = node.pRight?.getNodeHeight() ?? 0;
     node.height = 1 + max(hLeft, hRight);
 
     int diff = hRight - hLeft;
@@ -52,10 +42,10 @@ class AVLTree<K extends Comparable<K>, T> {
 
   AVLNode reBalance(AVLNode node) {
     updateNode(node);
-    int bf = getBalanceFactor(node);
+    int bf = node.getNodeBalanceFactor();
 
     if (bf > 1) {   //lệch phải-phải => xoay trái tại node
-      if (getBalanceFactor(node.pRight) >= 0) {
+      if (node.pRight!.getNodeBalanceFactor() >= 0) {       //pright luôn không null do đã lệch phải
         return rotateLeft(node);
       } 
       else {        //lệch phải-trái =>xoay phải tại con phải => trở thành lệch phải phải
@@ -64,7 +54,7 @@ class AVLTree<K extends Comparable<K>, T> {
       }
     }
     if (bf < -1) {
-      if (getBalanceFactor(node.pLeft) <= 0) {
+      if (node.pLeft!.getNodeBalanceFactor() <= 0) {
         return rotateRight(node);
       } 
       else { 
@@ -89,7 +79,7 @@ class AVLTree<K extends Comparable<K>, T> {
   //sau khi tới nơi, node vốn dĩ là null sẽ được gán bằng một node mới . sau đó vừa trồi lên vừa gọi reBalance cho những node cha của nó
   AVLNode insertHelper(AVLNode? node, K key, T value) {
     if (node == null) {
-      size++;
+      _size++;
       return AVLNode(key, value);
     }
     if (key.compareTo(node.key) < 0) { // key < node.key
@@ -105,7 +95,7 @@ class AVLTree<K extends Comparable<K>, T> {
   }
 
   void insert(K key, T value) {
-    root = insertHelper(root, key, value);
+    _root = insertHelper(_root, key, value);
   }
 
   AVLNode? removeHelper(AVLNode? node, K key) {
@@ -134,7 +124,7 @@ class AVLTree<K extends Comparable<K>, T> {
 }
 
   void remove(K key) {
-    root = removeHelper(root, key);
+    _root = removeHelper(_root, key);
   }
 
   void clearHelper(AVLNode? node) {
@@ -146,13 +136,13 @@ class AVLTree<K extends Comparable<K>, T> {
   }
 
   void clear() {
-    clearHelper(root);
-    root = null;
-    size = 0;
+    clearHelper(_root);
+    _root = null;
+    _size = 0;
   }
 
   bool contains(K key) {
-    AVLNode? cur = root;
+    AVLNode? cur = _root;
     while (cur != null) {
       //if (key<cur->key) cur = cur->pLeft;
       if (key.compareTo(cur.key) < 0) {
@@ -165,6 +155,40 @@ class AVLTree<K extends Comparable<K>, T> {
       else {return true;}
     }
     return false;
+  }
+
+  bool isEmpty() {
+    return (_size == 0);
+  }
+
+//getters
+  
+
+
+
+  int getHeight() {
+    if (_root == null) return 0;
+    return _root!.getNodeHeight();
+  }
+  int getSize() {
+    return _size;
+  }
+  AVLNode? getRoot() {
+    return _root;
+  }
+
+  List<K> getInOrderKeysHelper(AVLNode? node) {
+    List<K> result = [];
+    if (node != null) {
+      result.addAll(getInOrderKeysHelper(node.pLeft));
+      result.add(node.key);
+      result.addAll(getInOrderKeysHelper(node.pRight));
+    }
+    return result;
+  }
+
+  List<K> getInOrderKeys() {
+    return getInOrderKeysHelper(_root);
   }
 
 }
