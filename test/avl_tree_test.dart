@@ -5,7 +5,7 @@ import 'package:ruitar/logic/avl_node.dart';
 
 
 void main() {
-int getHeight(AVLNode? node) {
+  int getHeight(AVLNode? node) {
     if (node == null) return 0;
     return 1 + max(getHeight(node.pLeft), getHeight(node.pRight));
   }
