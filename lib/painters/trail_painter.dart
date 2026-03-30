@@ -66,19 +66,19 @@ class TrailPainter extends CustomPainter {
 
           if (lifeLeft <= 0) continue; 
 
-          double currentRadius = 0.8 * MAX_CURSOR_SIZE * lifeLeft; 
+          // double currentRadius = 0.8 * MAX_CURSOR_SIZE * lifeLeft; 
 
-          // final Gradient trailGradient = RadialGradient(
-          //   colors: [
-          //     const Color.fromARGB(255,251,251,251),
-          //     const Color.fromARGB(255, 0, 58, 107),
-          //   ],
-          // );
+          // // final Gradient trailGradient = RadialGradient(
+          // //   colors: [
+          // //     const Color.fromARGB(255,251,251,251),
+          // //     const Color.fromARGB(255, 0, 58, 107),
+          // //   ],
+          // // );
 
-          // paint.shader = trailGradient.createShader(
-          //   Rect.fromCircle(center: point.position, radius: currentRadius),
-          // );
-          int transparency = (100 * lifeLeft).truncate();
+          // // paint.shader = trailGradient.createShader(
+          // //   Rect.fromCircle(center: point.position, radius: currentRadius),
+          // // );
+          // int transparency = (100 * lifeLeft).truncate();
           paint.color = Color.fromARGB(150,251,251,251);
           canvas.drawCircle(point.position, 3, paint);
         }

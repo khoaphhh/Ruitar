@@ -74,7 +74,7 @@ AVLNode reBalance(AVLNode node) {
       return rotateLeft(node);
     }
   }
-  if (bf < 1) {
+  if (bf < -1) {
     if (getBalanceFactor(node.pLeft) <= 0) {
       return rotateRight(node);
     } 
