@@ -4,7 +4,7 @@ import 'avl_node.dart';
 import 'dart:math';
 //import 'dart:collection';         //for using queue
 
-class AVLTree<K extends Comparable<K>, T> {
+class AVLTree<K extends double, T> {
   int _size;   //number of nodes
   AVLNode? _root;
 
@@ -77,6 +77,8 @@ class AVLTree<K extends Comparable<K>, T> {
     return node;
   }
 
+
+
   //đường đi: xuất phát từ root và đệ quy đến đúng vị trí sẽ được insert
   //sau khi tới nơi, node vốn dĩ là null sẽ được gán bằng một node mới . sau đó vừa trồi lên vừa gọi reBalance cho những node cha của nó
   AVLNode insertHelper(AVLNode? node, K key, T value) {
@@ -84,7 +86,7 @@ class AVLTree<K extends Comparable<K>, T> {
       _size++;
       return AVLNode(key, value);
     }
-    if (key.compareTo(node.key) < 0) { // key < node.key
+    if (key.compareTo(node.key) < 0 ) { // key < node.key
       node.pLeft = insertHelper(node.pLeft, key, value);
     } 
     else if (key.compareTo(node.key) > 0) { // key > node.key
@@ -193,10 +195,19 @@ class AVLTree<K extends Comparable<K>, T> {
     return getInOrderKeysHelper(_root);
   }
 
-  List<ChordRecord>? findInRange(double min, double max) {
-    List<ChordRecord>? result;
-    //TODO
-    return result;
+  void findInRange(List<ChordRecord> result, AVLNode? node, double min, double max) {
+    if (node == null) return;
+
+    double currentKey = node.key;
+
+    if (currentKey >= min) {        //đi ra ngoài rìa bên trái
+      findInRange (result, node.pRight, min, max);
+    }
+    
+    if (currentKey >= min && currentKey <= max) {
+      result.add(node.data);
+    }
+
   }
 
 }

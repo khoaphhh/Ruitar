@@ -22,7 +22,7 @@ void main() {
 
   group('AVL Tree - Insert & Rotations', () {
     test('Trường hợp LL (Right Rotation)', () {
-      var tree = AVLTree<num, String>();
+      var tree = AVLTree<double, String>();
       // Chèn các số giảm dần sẽ làm cây lệch trái (LL)
       tree.insert(30.0, "A");
       tree.insert(20.0, "B");
@@ -35,7 +35,7 @@ void main() {
     });
 
     test('Trường hợp LR (Left-Right Rotation)', () {
-      var tree = AVLTree<num, String>();
+      var tree = AVLTree<double, String>();
       tree.insert(30.0, "A");
       tree.insert(10.0, "B");
       tree.insert(20.0, "C"); // Cú chèn này kích hoạt xoay kép Trái-Phải
@@ -47,11 +47,11 @@ void main() {
   });
 
   group('AVL Tree - Removals', () {
-    late AVLTree<num, String> tree;
+    late AVLTree<double, String> tree;
 
     // setUp chạy trước mỗi testcase trong group này
     setUp(() {
-      tree = AVLTree<num, String>();
+      tree = AVLTree<double, String>();
       // Tạo một cây cân bằng sẵn
       tree.insert(20.0, "Root");
       tree.insert(10.0, "Left");
@@ -86,10 +86,10 @@ void main() {
   });
 
   group('AVL Tree - Size & Clear Tests', () {
-    late AVLTree<num, String> tree;
+    late AVLTree<double, String> tree;
 
     setUp(() {
-      tree = AVLTree<num, String>();
+      tree = AVLTree<double, String>();
     });
 
     test('Size ban đầu phải bằng 0 và cây phải rỗng', () {
@@ -130,10 +130,10 @@ void main() {
   // NHÓM TEST MỚI: KIỂM TRA HÀM CONTAINS VÀ SEARCH
   // ---------------------------------------------------------
   group('AVL Tree - Contains Tests', () {
-    late AVLTree<num, String> tree;
+    late AVLTree<double, String> tree;
 
     setUp(() {
-      tree = AVLTree<num, String>();
+      tree = AVLTree<double, String>();
       // Cây có cấu trúc: 50 làm gốc, 30 bên trái, 70 bên phải
       tree.insert(50.0, "Root");
       tree.insert(30.0, "Left");
@@ -155,7 +155,7 @@ void main() {
     });
 
     test('contains() không bị crash khi tìm trên cây rỗng', () {
-      var emptyTree = AVLTree<num, String>();
+      var emptyTree = AVLTree<double, String>();
       expect(emptyTree.contains(10.0), isFalse);
     });
   });
@@ -164,15 +164,15 @@ void main() {
   // NHÓM TEST MỚI: TÍNH TOÀN VẸN CỦA DỮ LIỆU & INSERT TRÙNG LẶP
   // ---------------------------------------------------------
   group('AVL Tree - Data Integrity & Duplicates Tests', () {
-    late AVLTree<num, String> tree;
+    late AVLTree<double, String> tree;
 
     setUp(() {
-      tree = AVLTree<num, String>();
+      tree = AVLTree<double, String>();
     });
 
     test('getInOrderKeys luôn trả về mảng được sắp xếp tăng dần nghiêm ngặt', () {
       // Chèn dữ liệu lộn xộn để kích hoạt các phép xoay
-      List<num> keysToInsert = [50.0, 20.0, 80.0, 10.0, 30.0, 90.0, 40.0];
+      List<double> keysToInsert = [50.0, 20.0, 80.0, 10.0, 30.0, 90.0, 40.0];
       for (var k in keysToInsert) {
         tree.insert(k, "Data_$k");
       }
@@ -180,7 +180,7 @@ void main() {
       var inOrderList = tree.getInOrderKeys();
       
       // Mảng in-order mong đợi
-      List<num> expectedList = [10.0, 20.0, 30.0, 40.0, 50.0, 80.0, 90.0];
+      List<double> expectedList = [10.0, 20.0, 30.0, 40.0, 50.0, 80.0, 90.0];
       
       expect(inOrderList, expectedList);
       expect(inOrderList.length, tree.getSize()); // Đảm bảo không mất mát dữ liệu

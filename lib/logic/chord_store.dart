@@ -1,3 +1,7 @@
+// import 'dart:ffi';
+
+// import 'package:ruitar/logic/avl_node.dart';
+
 import 'chord_record.dart';
 import 'avl_tree.dart';
 import 'dart:math';
@@ -5,7 +9,7 @@ import 'dart:math';
 
 
 class ChordStore {
-  final AVLTree<num, ChordRecord> _chordStore = AVLTree();      //sắp xếp thứ tự theo norm của chord
+  final AVLTree<double, ChordRecord> _chordStore = AVLTree();      //sắp xếp thứ tự theo norm của chord
   final int dimension;
   double epsilon = 15.0;                                        //px, Lọc norm trước rồi mới so sánh
 
@@ -19,8 +23,10 @@ class ChordStore {
     }
   }
 
-  ChordRecord? findNearest(List<double> inputVector) {
-    
+  ChordRecord? findNearest(List<double> inputVector) {      //bảo đảm inputVector cùng số dimesion
+    if (inputVector.length != dimension) throw Exception('inputVector must have &dimension dimension');
+
+
     //tính norm inputVector
     double sum = 0.0;
     for (int i = 0; i<inputVector.length; i++) {
@@ -28,9 +34,10 @@ class ChordStore {
     }
     double inputNorm = sqrt(sum);
 
-    List<ChordRecord>? candidates = _chordStore.findInRange(inputNorm - epsilon, inputNorm + epsilon);
+    List<ChordRecord> candidates = [];
+    _chordStore.findInRange(candidates, _chordStore.getRoot(), inputNorm - epsilon, inputNorm + epsilon);
 
-    if (candidates == null) return null;
+    if (candidates.isEmpty) return null;
 
     //sau khi lọc trong khoảng norm rồi thì tính khoảng cách
     ChordRecord? bestMatch;
@@ -43,15 +50,19 @@ class ChordStore {
         bestMatch = candidate;
       }
     }
-
     return bestMatch;
   }
 
 
   double distanceToRecord(List<double> inputVector, ChordRecord record) {
     double dis = 0;
-    //TODO  
+    for (int i = 0; i < dimension; i++) {
+      dis += (inputVector.elementAt(i) - record.vector.elementAt(i));
+    }
     return sqrt(dis);
   }
-  
+  //getter
+  AVLTree<double, ChordRecord> getStore () {
+    return _chordStore;
+  }
 }

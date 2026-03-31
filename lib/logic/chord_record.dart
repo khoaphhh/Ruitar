@@ -1,5 +1,6 @@
 import 'dart:math';
 
+
 class ChordRecord {
   final String chordName;
   final int numberOfPoints;       //số điểm chạm [2,3,4]
@@ -11,7 +12,6 @@ class ChordRecord {
       throw Exception('numberOfPoints must be 2, 3, or 4');
     }
     final size = _calcVectorSize(numberOfPoints);
-    vector = List<double>.filled(size, 0.0);
 
     if (inputVector.length != size) throw Exception("inputVector must have the size of %size");
     vector = inputVector;
