@@ -1,3 +1,5 @@
+import 'package:ruitar/logic/chord_record.dart';
+
 import 'avl_node.dart';
 import 'dart:math';
 //import 'dart:collection';         //for using queue
@@ -189,6 +191,12 @@ class AVLTree<K extends Comparable<K>, T> {
 
   List<K> getInOrderKeys() {
     return getInOrderKeysHelper(_root);
+  }
+
+  List<ChordRecord>? findInRange(double min, double max) {
+    List<ChordRecord>? result;
+    //TODO
+    return result;
   }
 
 }
