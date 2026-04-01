@@ -14,7 +14,9 @@ double getAngleInRadian (Offset a, Offset b, Offset c, Offset d) {          // g
   //góc giữa CD và trục Ox
   double rad2 = atan2(d.dy - c.dy, d.dx - c.dx);
   if (rad2 < 0) rad2 += pi;
-  return (rad1 - rad2).abs();
+  double result = (rad1 - rad2).abs();
+  if (result > pi/2) result -= pi/2;
+  return result;
 }
 
 

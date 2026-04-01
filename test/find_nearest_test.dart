@@ -45,5 +45,5 @@ void main() {
       expect(result, "chordName2") ;
     });
   });
-
+  //TODO: what about a dot within a triangle
 }
