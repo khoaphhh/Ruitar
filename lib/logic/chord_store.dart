@@ -35,7 +35,7 @@ class ChordStore {
     double inputNorm = sqrt(sum);
 
     List<ChordRecord> candidates = [];
-    _chordStore.findInRange(candidates, _chordStore.getRoot(), inputNorm - epsilon, inputNorm + epsilon);
+    _chordStore.findInRange(candidates, _chordStore.getRoot(), inputNorm, epsilon);
 
     if (candidates.isEmpty) return null;
 

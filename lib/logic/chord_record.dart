@@ -25,9 +25,9 @@ class ChordRecord {
   }
 
   int _calcVectorSize(int n) {
-    if (n == 2) return 32;
-    if (n == 3) return 48;
-    if (n == 4) return 64;
+    if (n == 2) return 8;
+    if (n == 3) return 16;
+    if (n == 4) return 32;
     throw Exception('numberOfPoints must be 2, 3, or 4');
   }
 

@@ -195,13 +195,15 @@ class AVLTree<K extends double, T> {
     return getInOrderKeysHelper(_root);
   }
 
-  void findInRange(List<ChordRecord> result, AVLNode? node, double min, double max) {
+  void findInRange(List<ChordRecord> result, AVLNode? node, double norm, double epsilon) {
+    double min = norm - epsilon;
+    double max = norm + epsilon;
     if (node == null) return;
 
     double currentKey = node.key;
 
     if (currentKey >= min) {        //đi ra ngoài rìa bên trái
-      findInRange (result, node.pRight, min, max);
+      findInRange (result, node.pLeft, norm, epsilon);
     }
     
     if (currentKey >= min && currentKey <= max) {
