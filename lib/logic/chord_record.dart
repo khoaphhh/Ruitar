@@ -7,7 +7,7 @@ class ChordRecord {
   late final List<double> vector;      //vector nhận dạng ChordRecord
   late final double norm;
 
-  ChordRecord({required this.chordName, required this.numberOfPoints, required inputVector}){
+  ChordRecord({required this.chordName, required this.numberOfPoints, required List<double> inputVector}){
     if (numberOfPoints != 2 && numberOfPoints != 3 && numberOfPoints != 4) {
       throw Exception('numberOfPoints must be 2, 3, or 4');
     }
