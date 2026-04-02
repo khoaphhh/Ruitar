@@ -10,26 +10,22 @@ import 'dart:math';
 
 class ChordStore {
   final AVLTree<double, ChordRecord> _chordStore = AVLTree();      //sắp xếp thứ tự theo norm của chord
-  final int dimension;
   double epsilon = 15.0;                                        //px, Lọc norm trước rồi mới so sánh
 
-  ChordStore({required this.dimension});
+  //ChordStore();
 
   void loadRecords(List<ChordRecord> records) {
     for (ChordRecord record in records) {
-      if (record.vector.length != dimension) throw Exception('record\'s dimesion doesn\'t equal to store\'s dimension');
       double norm = record.norm; // Tính Norm nhiều chiều
       _chordStore.insert(norm, record);       // Cây tự động xếp theo Norm
     }
   }
 
   ChordRecord? findNearest(List<double> inputVector) {      //bảo đảm inputVector cùng số dimesion
-    if (inputVector.length != dimension) throw Exception('inputVector must have &dimension dimension');
-
 
     //tính norm inputVector
     double sum = 0.0;
-    for (int i = 0; i<inputVector.length; i++) {
+    for (int i = 0; i<12; i++) {
       sum += inputVector.elementAt(i) * inputVector.elementAt(i);
     }
     double inputNorm = sqrt(sum);
@@ -56,8 +52,8 @@ class ChordStore {
 
   double distanceToRecord(List<double> inputVector, ChordRecord record) {
     double dis = 0;
-    for (int i = 0; i < dimension; i++) {
-      dis += (inputVector.elementAt(i) - record.vector.elementAt(i));
+    for (int i = 0; i < 12; i++) {
+      dis += (inputVector.elementAt(i) - record.vector.elementAt(i)) * (inputVector.elementAt(i) - record.vector.elementAt(i));
     }
     return sqrt(dis);
   }
