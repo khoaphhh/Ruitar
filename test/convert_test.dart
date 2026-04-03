@@ -25,7 +25,7 @@ void main() {
     points[2] = Offset(100, 200);
     List<double>? vector = convertToVector(points);
     expect(vector == null, false);
-    expect(vector, orderedEquals([100,100,100,100,200,200,100,100,closeTo(141,1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/2,0.1),5000,closeTo(400/3,1), closeTo(400/3, 1),closeTo((100*100*141)/(4*5000),10)]));
+    expect(vector, orderedEquals([100,100,100,200,200,100,100,100,closeTo(141,1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/2,0.1),5000,closeTo(400/3,1), closeTo(400/3, 1),closeTo((100*100*141)/(4*5000),10)]));
   });
   test('test convertToVector 4 points', () {            //hình vuông 
     Map<int,Offset> points = {};
@@ -35,7 +35,7 @@ void main() {
     points[3] = Offset(200, 200);
     List<double>? vector = convertToVector(points);
     expect(vector == null, false);
-    expect(vector, orderedEquals([100,100,100,100,200,200,200,200,
+    expect(vector, orderedEquals([100,100,100,200,200,100,200,200,
                                   100,100,100,100,closeTo(141,1),closeTo(141,1),
                                   closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/4,0.1),closeTo(pi/2,0.1),closeTo(pi/2,0.1),closeTo(pi/2,0.1),closeTo(pi/2,0.1),
                                   150,150,

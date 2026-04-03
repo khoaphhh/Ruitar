@@ -19,11 +19,11 @@ class TemplateStore {
     
 
     //https://globalguitarnetwork.com/wp-content/uploads/2014/05/Open-Chords.png
-    setChordBy2Offset(cr_2points, "E_minor", Offset(100, 100), Offset(200, 200));
-    setChordBy2Offset(cr_2points, "E_7", Offset(100, 100), Offset(200, 200));
-    setChordBy2Offset(cr_2points, "A_7", Offset(100, 100), Offset(200, 200));
-    setChordBy2Offset(cr_2points, "A_minor7", Offset(100, 100), Offset(200, 200));
-    setChordBy2Offset(cr_2points, "C_major7", Offset(100, 100), Offset(200, 200));
+    setChordBy2Offset(cr_2points, "E_minor", Offset(106, 236), Offset(168, 296));
+    setChordBy2Offset(cr_2points, "E_7", Offset(106, 236), Offset(249, 161));
+    setChordBy2Offset(cr_2points, "A_7", Offset(177, 240), Offset(301, 280));
+    setChordBy2Offset(cr_2points, "A_minor7", Offset(177, 240), Offset(299, 152));
+    setChordBy2Offset(cr_2points, "C_major7", Offset(128, 365), Offset(170, 286));
 
     setChordBy3Offset(cr_3points, "A_major", Offset(100, 100), Offset(200, 200),Offset(200, 200));
     setChordBy3Offset(cr_3points, "A_major7", Offset(100, 100), Offset(200, 200),Offset(200, 200));

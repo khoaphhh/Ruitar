@@ -24,8 +24,9 @@ List<double>? convertToVector(Map<int, Offset> points) {
   List<double> vector;
   if (points.length <= 1 || points.length >= 5) return null;
   if (points.length == 2) {
+    // V = [x1, y1, x2, y2, L, angle, mx, my]
     // với hai điểm A(0,0), B(1,1)
-    // [0.0000, 0.0000, 1.0000, 1.0000,        // tọa độ 2 điểm ĐÃ SẮP XẾP
+    // [0.0000, 0.0000, 1.0000, 1.0000,        // tọa độ 2 điểm ĐÃ SẮP XẾP theo x
     // 1.4142,                                 // độ dài
     // 0.7854,                                 // góc (tính bằng rad) so với trục Ox với vector 2 điểm
     // 0.5000, 0.5000                         // trung điểm
@@ -37,8 +38,9 @@ List<double>? convertToVector(Map<int, Offset> points) {
     double y1 = p1.dy;
     double y2 = p2.dy;
 
-    List<double> sorted = [x1, x2, y1, y2];
-    sorted.sort();
+    // List<double> sorted = [x1, x2, y1, y2];
+    // sorted.sort();
+
     double dis = getLengthBetween2Points(p1, p2);
 
     //gôc giữa vector với truc Ox
@@ -54,9 +56,34 @@ List<double>? convertToVector(Map<int, Offset> points) {
     Offset midpoint = Offset((x1+x2)/2, (y1+y2)/2);
 
     vector = List.filled(8, 0.0);
-    for (int i = 0; i<=3; i++) {
-      vector[i] = sorted[i];
+    // for (int i = 0; i<=3; i++) {
+    //   vector[i] = sorted[i];
+    // }
+
+    // if (x1<x2) {
+    //   vector[0] = x1;
+    //   vector[1] = y1;
+    //   vector[2] = x2;
+    //   vector[3] = y2;
+    // }
+    // else {
+    //   vector[0] = x2;
+    //   vector[1] = y2;
+    //   vector[2] = x1;
+    //   vector[3] = y1;
+    // }
+    Map<int, Offset> points_copy = points;
+    List<MapEntry<int, Offset>> sortedEntries = points_copy.entries.toList();
+    sortedEntries.sort((a, b) => a.value.dx.compareTo(b.value.dx));
+    Map<int, Offset> points_sorted = Map.fromEntries(sortedEntries);
+
+    int index = 0;
+    for (int i = 0; i<points_sorted.length; i++) {
+      vector[index++] = points_sorted.values.elementAt(i).dx;
+      vector[index++] = points_sorted.values.elementAt(i).dy;
     }
+
+    
     vector[4] = dis;
     vector[5] = rad;
     vector[6] = midpoint.dx;
@@ -65,7 +92,7 @@ List<double>? convertToVector(Map<int, Offset> points) {
   }
   else if (points.length == 3) {
 
-    // Tọa độ 3 điểm đã sắp xếp	x1,y1,x2,y2,x3,y3	                  6
+    // Tọa độ 3 điểm đã sắp xếp	x1,y1,x2,y2,x3,y3	                  6       (x1 < x2 < x3)
     // Độ dài 3 cạnh	          a, b, c	                            3
     // 3 góc (rad)	            A, B, C	                            3
     // Diện tích	              |(x2-x1)(y3-y1)-(x3-x1)(y2-y1)|/2	  1
@@ -82,8 +109,8 @@ List<double>? convertToVector(Map<int, Offset> points) {
     double y1 = p1.dy;
     double y2 = p2.dy;
     double y3 = p3.dy;
-    List<double> sortedOffset = [x1, x2, x3, y1, y2, y3];
-    sortedOffset.sort();
+    // List<double> sortedOffset = [x1, x2, x3, y1, y2, y3];
+    // sortedOffset.sort();
     
     double dis1 = getLengthBetween2Points(p1, p2);
     double dis2 = getLengthBetween2Points(p1, p3);
@@ -105,8 +132,18 @@ List<double>? convertToVector(Map<int, Offset> points) {
 
     double circumRadius = (dis1 * dis2 * dis3) / (4*area);
 
-    for (int i = 0; i<=5; i++) {          //6 phần tử
-      vector[i] = sortedOffset[i];
+    // for (int i = 0; i<=5; i++) {          //6 phần tử
+    //   vector[i] = sortedOffset[i];
+    // }
+    Map<int, Offset> points_copy = points;
+    List<MapEntry<int, Offset>> sortedEntries = points_copy.entries.toList();
+    sortedEntries.sort((a, b) => a.value.dx.compareTo(b.value.dx));
+    Map<int, Offset> points_sorted = Map.fromEntries(sortedEntries);
+
+    int index = 0;
+    for (int i = 0; i<points_sorted.length; i++) {
+      vector[index++] = points_sorted.values.elementAt(i).dx;
+      vector[index++] = points_sorted.values.elementAt(i).dy;
     }
 
     for (int i = 6; i<=8; i++) {          //3 phần tử
@@ -169,9 +206,18 @@ List<double>? convertToVector(Map<int, Offset> points) {
     Offset midpoint = Offset((x1+x2+x3+x4) / 4.0, (y1+y2+y3+y4) / 4.0);
 
     vector = List.filled(32, 0);
-    for (int i = 0; i<=7; i++) {
-      vector[i] = sortedOffset[i];
+
+    Map<int, Offset> points_copy = points;
+    List<MapEntry<int, Offset>> sortedEntries = points_copy.entries.toList();
+    sortedEntries.sort((a, b) => a.value.dx.compareTo(b.value.dx));
+    Map<int, Offset> points_sorted = Map.fromEntries(sortedEntries);
+
+    int index = 0;
+    for (int i = 0; i<points_sorted.length; i++) {
+      vector[index++] = points_sorted.values.elementAt(i).dx;
+      vector[index++] = points_sorted.values.elementAt(i).dy;
     }
+
     for (int i = 8; i<=13; i++) {
       vector[i] = sortedDis[i-8];
     }

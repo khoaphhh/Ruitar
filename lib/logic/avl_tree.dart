@@ -195,6 +195,20 @@ class AVLTree<K extends double, T> {
     return getInOrderKeysHelper(_root);
   }
 
+  List<T> getInOrderValuesHelper(AVLNode? node) {
+    List<T> result = [];
+    if (node != null) {
+      result.addAll(getInOrderValuesHelper(node.pLeft));
+      result.add(node.data);
+      result.addAll(getInOrderValuesHelper(node.pRight));
+    }
+    return result;
+  }
+
+  List<T> getInOrderValues() {
+    return getInOrderValuesHelper(_root);
+  }
+
   void findInRange(List<ChordRecord> result, AVLNode? node, double norm, double epsilon) {
     double min = norm - epsilon;
     double max = norm + epsilon;
