@@ -4,7 +4,6 @@ import 'package:ruitar/logic/chord_record.dart';
 import 'ui/touch_detector.dart';
 import 'logic/calc_methods.dart';
 
-
 void main() => runApp(const MaterialApp(home: HomeScreen()));
 
 // 1. Đổi thành StatefulWidget
@@ -33,29 +32,31 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TouchDetector(
             onUpdate: (points) { 
-              // 4. CHỐT CHẶN LUỒNG DỮ LIỆU
-              if (points.length <= 1 || points.length > 4) {
-                return; // Thoát ngay, không làm gì cả
-              }
-              ChordRecord? nearestChord;
-
-
-              List<Offset>? inputVector = convertToVector(points);
-              if (inputVector == null) {
+              if (points.isEmpty || points.length == 1 || points.length >=5) {
+                  setState(() {
+                    detectedChord = "none";
+                  });
                 return;
               }
-              else {
-                nearestChord = store.store.findNearest(inputVector);
-                if (nearestChord == null) {
+
+              if (points.length >= 2 && points.length <= 4) {
+                ChordRecord? nearestChord;
+                List<Offset>? inputVector = convertToVector(points);
+                if (inputVector == null) {
                   return;
                 }
                 else {
-                  setState(() {
-                    detectedChord = nearestChord!.chordName;
-                  });
+                  nearestChord = store.store.findNearest(inputVector);
+                  if (nearestChord == null) {
+                    return;
+                  }
+                  else {
+                    setState(() {
+                      detectedChord = nearestChord!.chordName;
+                    });
+                  }
                 }
               }
-
             },
           ),
           Positioned(

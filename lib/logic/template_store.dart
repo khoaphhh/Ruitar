@@ -1,6 +1,5 @@
 import 'package:ruitar/logic/chord_store.dart';
 import 'package:ruitar/logic/chord_record.dart';
-import 'package:ruitar/logic/calc_methods.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,12 +16,12 @@ class TemplateStore {
     chordRecords.add(ChordRecord(chordName: "E_minor", numberOfPoints: 2, inputVector: [Offset(106, 236), Offset(168, 296)]));
     chordRecords.add(ChordRecord(chordName: "E_7", numberOfPoints: 2, inputVector: [Offset(106, 236), Offset(249, 161)]));
     chordRecords.add(ChordRecord(chordName: "A_7", numberOfPoints: 2, inputVector: [Offset(177, 240), Offset(301, 280)]));
-    chordRecords.add(ChordRecord(chordName: "A_minor7", numberOfPoints: 2, inputVector: [Offset(177, 240), Offset(299, 152)]));
-    chordRecords.add(ChordRecord(chordName: "C_major7", numberOfPoints: 2, inputVector: [Offset(128, 365), Offset(170, 286)]));
-    chordRecords.add(ChordRecord(chordName: "D_minor7", numberOfPoints: 2, inputVector: [Offset(329, 184), Offset(229, 269)]));
+    //chordRecords.add(ChordRecord(chordName: "A_minor7", numberOfPoints: 2, inputVector: [Offset(177, 240), Offset(299, 152)]));
+    //chordRecords.add(ChordRecord(chordName: "C_major7", numberOfPoints: 2, inputVector: [Offset(128, 365), Offset(170, 286)]));
+    //chordRecords.add(ChordRecord(chordName: "D_minor7", numberOfPoints: 2, inputVector: [Offset(329, 184), Offset(229, 269)]));
     
     chordRecords.add(ChordRecord(chordName: "A_major", numberOfPoints: 3, inputVector: [Offset(324, 289), Offset(245, 242),Offset(164, 231)]));
-    chordRecords.add(ChordRecord(chordName: "A_major7", numberOfPoints: 3, inputVector: [Offset(170, 247), Offset(315, 218),Offset(238, 163)]));
+    //chordRecords.add(ChordRecord(chordName: "A_major7", numberOfPoints: 3, inputVector: [Offset(170, 247), Offset(315, 218),Offset(238, 163)]));
     chordRecords.add(ChordRecord(chordName: "A_minor", numberOfPoints: 3, inputVector: [Offset(162, 236), Offset(238, 278),Offset(281, 132)]));
     chordRecords.add(ChordRecord(chordName: "C_major", numberOfPoints: 3, inputVector: [Offset(121, 354), Offset(165, 260),Offset(322, 127)]));
     chordRecords.add(ChordRecord(chordName: "D_major", numberOfPoints: 3, inputVector: [Offset(241, 237), Offset(347, 271),Offset(293, 386)]));
@@ -34,9 +33,10 @@ class TemplateStore {
     chordRecords.add(ChordRecord(chordName: "F_major7", numberOfPoints: 3, inputVector: [Offset(224, 321), Offset(258, 234),Offset(302, 145)]));
     
     chordRecords.add(ChordRecord(chordName: "B_7", numberOfPoints: 4, inputVector: [Offset(78, 240), Offset(134, 174),Offset(215, 277),Offset(324, 310)]));
-    chordRecords.add(ChordRecord(chordName: "C_7", numberOfPoints: 4, inputVector: [Offset(148, 252), Offset(102, 350),Offset(253, 388),Offset(315, 144)]));
+    //chordRecords.add(ChordRecord(chordName: "C_7", numberOfPoints: 4, inputVector: [Offset(148, 252), Offset(102, 350),Offset(253, 388),Offset(315, 144)]));
     chordRecords.add(ChordRecord(chordName: "F_major", numberOfPoints: 4, inputVector: [Offset(131, 310), Offset(108, 390),Offset(224, 244),Offset(92, 160)]));
-
+    chordRecords.add(ChordRecord(chordName: "B_minor", numberOfPoints: 4, inputVector: [Offset(320, 353), Offset(185, 288),Offset(238, 409),Offset(300, 487)]));
+    //thiếu Bm
     // //https://globalguitarnetwork.com/wp-content/uploads/2014/05/Open-Chords.png
     // setChordBy2Offset(cr_2points, "E_minor", Offset(106, 236), Offset(168, 296));
     // setChordBy2Offset(cr_2points, "E_7", Offset(106, 236), Offset(249, 161));
