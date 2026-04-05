@@ -120,7 +120,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
           child: IgnorePointer(
             child: Container(
               padding: const EdgeInsets.all(8),
-              color: Color.fromARGB(144, 255, 255, 255),
+              color: Color.fromARGB(100, 255, 255, 255),
               child: Text(
                 "Số ngón: (${_activePointers.length})",
                 style: const TextStyle(
@@ -141,7 +141,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
             child: IgnorePointer(
               child: Container(
                 padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(144, 255, 255, 255),
+                color: Color.fromARGB(100, 255, 255, 255),
                 child: Text(
                   "Waiting for input...",
                   style: const TextStyle(
@@ -162,7 +162,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
             child: IgnorePointer(
               child: Container(
                 padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(144, 255, 255, 255),
+                color: Color.fromARGB(100, 255, 255, 255),
                 child: Text(
                   //"Tọa độ: (${_fingers.values.elementAt(_activePointers.elementAt(0)).last.position})",
                   //"Tọa độ: (${_fingers.entries..last.position})",
@@ -184,7 +184,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
             child: IgnorePointer(
               child: Container(
                 padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(144, 255, 255, 255),
+                color: Color.fromARGB(100, 255, 255, 255),
                 child: Text(
                   "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()}),\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()})",
                   style: const TextStyle(
@@ -204,7 +204,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
             child: IgnorePointer(
               child: Container(
                 padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(144, 255, 255, 255),
+                color: Color.fromARGB(100, 255, 255, 255),
                 child: Text(
                   "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()})",
                   style: const TextStyle(
@@ -224,7 +224,7 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
             child: IgnorePointer(
               child: Container(
                 padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(144, 255, 255, 255),
+                color: Color.fromARGB(100, 255, 255, 255),
                 child: Text(
                     "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()}),\nTọa độ 4: (${currentPoints.entries.elementAt(3).value.dx.round()}, ${currentPoints.entries.elementAt(3).value.dy.round()})",
                     style: const TextStyle(
