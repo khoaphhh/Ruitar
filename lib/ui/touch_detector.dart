@@ -114,128 +114,128 @@ class _TouchDetectorState extends State<TouchDetector> with SingleTickerProvider
         ),
 
 
-        Positioned(
-          top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-          left: 220, // Cách mép trái 20 pixel
-          child: IgnorePointer(
-            child: Container(
-              padding: const EdgeInsets.all(8),
-              color: Color.fromARGB(100, 255, 255, 255),
-              child: Text(
-                "Số ngón: (${_activePointers.length})",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          )
-        ),
+        // Positioned(
+        //   top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //   left: 220, // Cách mép trái 20 pixel
+        //   child: IgnorePointer(
+        //     child: Container(
+        //       padding: const EdgeInsets.all(8),
+        //       color: Color.fromARGB(100, 255, 255, 255),
+        //       child: Text(
+        //         "Số ngón: (${_activePointers.length})",
+        //         style: const TextStyle(
+        //           color: Colors.white,
+        //           fontSize: 16,
+        //           fontWeight: FontWeight.bold,
+        //         ),
+        //       ),
+        //     ),
+        //   )
+        // ),
 
 
-        if (_activePointers.isEmpty) 
-          Positioned(
-            top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-            left: 20, // Cách mép trái 20 pixel
-            child: IgnorePointer(
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(100, 255, 255, 255),
-                child: Text(
-                  "Waiting for input...",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
-            ),
-          ),
+        // if (_activePointers.isEmpty) 
+        //   Positioned(
+        //     top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //     left: 20, // Cách mép trái 20 pixel
+        //     child: IgnorePointer(
+        //       child: Container(
+        //         padding: const EdgeInsets.all(8),
+        //         color: Color.fromARGB(100, 255, 255, 255),
+        //         child: Text(
+        //           "Waiting for input...",
+        //           style: const TextStyle(
+        //             color: Colors.white,
+        //             fontSize: 16,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //       )
+        //     ),
+        //   ),
         
         
-        if (_activePointers.length == 1)
-          Positioned(
-            top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-            left: 20, // Cách mép trái 20 pixel
-            child: IgnorePointer(
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(100, 255, 255, 255),
-                child: Text(
-                  //"Tọa độ: (${_fingers.values.elementAt(_activePointers.elementAt(0)).last.position})",
-                  //"Tọa độ: (${_fingers.entries..last.position})",
-                  "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-          ),
+        // if (_activePointers.length == 1)
+        //   Positioned(
+        //     top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //     left: 20, // Cách mép trái 20 pixel
+        //     child: IgnorePointer(
+        //       child: Container(
+        //         padding: const EdgeInsets.all(8),
+        //         color: Color.fromARGB(100, 255, 255, 255),
+        //         child: Text(
+        //           //"Tọa độ: (${_fingers.values.elementAt(_activePointers.elementAt(0)).last.position})",
+        //           //"Tọa độ: (${_fingers.entries..last.position})",
+        //           "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})",
+        //           style: const TextStyle(
+        //             color: Colors.white,
+        //             fontSize: 16,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //       ),
+        //     )
+        //   ),
         
-        if (_activePointers.length == 2)
-          Positioned(
-            top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-            left: 20, // Cách mép trái 20 pixel
-            child: IgnorePointer(
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(100, 255, 255, 255),
-                child: Text(
-                  "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()}),\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()})",
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-          ),
+        // if (_activePointers.length == 2)
+        //   Positioned(
+        //     top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //     left: 20, // Cách mép trái 20 pixel
+        //     child: IgnorePointer(
+        //       child: Container(
+        //         padding: const EdgeInsets.all(8),
+        //         color: Color.fromARGB(100, 255, 255, 255),
+        //         child: Text(
+        //           "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()}),\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()})",
+        //           style: const TextStyle(
+        //             color: Colors.white,
+        //             fontSize: 16,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //       ),
+        //     )
+        //   ),
 
-        if (_activePointers.length == 3)
-          Positioned(
-            top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-            left: 20, // Cách mép trái 20 pixel
-            child: IgnorePointer(
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(100, 255, 255, 255),
-                child: Text(
-                  "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()})",
-                  style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-          ),
+        // if (_activePointers.length == 3)
+        //   Positioned(
+        //     top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //     left: 20, // Cách mép trái 20 pixel
+        //     child: IgnorePointer(
+        //       child: Container(
+        //         padding: const EdgeInsets.all(8),
+        //         color: Color.fromARGB(100, 255, 255, 255),
+        //         child: Text(
+        //           "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()})",
+        //           style: const TextStyle(
+        //           color: Colors.white,
+        //           fontSize: 16,
+        //           fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //       ),
+        //     )
+        //   ),
         
-        if (_activePointers.length == 4)
-          Positioned(
-            top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
-            left: 20, // Cách mép trái 20 pixel
-            child: IgnorePointer(
-              child: Container(
-                padding: const EdgeInsets.all(8),
-                color: Color.fromARGB(100, 255, 255, 255),
-                child: Text(
-                    "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()}),\nTọa độ 4: (${currentPoints.entries.elementAt(3).value.dx.round()}, ${currentPoints.entries.elementAt(3).value.dy.round()})",
-                    style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            )
-          ),
+        // if (_activePointers.length == 4)
+        //   Positioned(
+        //     top: 50, // Cách mép trên 50 pixel (tránh bị dính vào thanh trạng thái pin/wifi)
+        //     left: 20, // Cách mép trái 20 pixel
+        //     child: IgnorePointer(
+        //       child: Container(
+        //         padding: const EdgeInsets.all(8),
+        //         color: Color.fromARGB(100, 255, 255, 255),
+        //         child: Text(
+        //             "Tọa độ 1: (${currentPoints.entries.elementAt(0).value.dx.round()}, ${currentPoints.entries.elementAt(0).value.dy.round()})\nTọa độ 2: (${currentPoints.entries.elementAt(1).value.dx.round()}, ${currentPoints.entries.elementAt(1).value.dy.round()}),\nTọa độ 3: (${currentPoints.entries.elementAt(2).value.dx.round()}, ${currentPoints.entries.elementAt(2).value.dy.round()}),\nTọa độ 4: (${currentPoints.entries.elementAt(3).value.dx.round()}, ${currentPoints.entries.elementAt(3).value.dy.round()})",
+        //             style: const TextStyle(
+        //             color: Colors.white,
+        //             fontSize: 16,
+        //             fontWeight: FontWeight.bold,
+        //           ),
+        //         ),
+        //       ),
+        //     )
+        //   ),
       ],
     );
   }

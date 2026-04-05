@@ -71,7 +71,7 @@ class _GuitarStrings extends State<GuitarStrings> {
                   curve: Curves.linear, 
                   
                   decoration: BoxDecoration(
-                    color: (isBeingTouched) ? Color.fromARGB(139, 13, 166, 249) : const Color.fromARGB(255, 0, 0, 0),
+                    color: (isBeingTouched) ? Color.fromARGB(0, 0, 0, 0) : const Color.fromARGB(255, 0, 0, 0),
                     border: Border.all(
                       color: Color.fromARGB(100, 255, 255, 255),
                       width: 2.0,

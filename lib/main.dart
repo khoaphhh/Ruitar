@@ -4,8 +4,13 @@ import 'package:ruitar/logic/chord_record.dart';
 import 'ui/touch_detector.dart';
 import 'logic/calc_methods.dart';
 import 'package:ruitar/ui/guitar_strings.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(const MaterialApp(home: HomeScreen()));
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  runApp(const MaterialApp(home: HomeScreen()));
+} 
 
 // 1. Đổi thành StatefulWidget
 class HomeScreen extends StatefulWidget {
@@ -65,23 +70,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                   },
                 ),
-                Positioned(
-                  top: 100,
-                  left: 220,
-                  child: IgnorePointer(
-                    child: Container(
-                      padding: const EdgeInsets.all(8),
-                      color: Color.fromARGB(100, 255, 255, 255),
-                      child: Text(
-                        "Hợp âm: $detectedChord",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                Stack(
+                  children: [
+                    IgnorePointer(        //không cản màn hình cảm ứng
+                      child: Center(      //căn chính giữa màn hình
+                        child: Padding(   // dịch xuống
+                          padding: EdgeInsets.only(top: 450),
+                          child: Text(
+                            "$detectedChord",
+                            style: const TextStyle(
+                              color: Color.fromARGB(200, 255, 255, 255),
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ]
                 ),
               ],
             ),
@@ -97,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
             flex: 1,
             child: GuitarStrings(
               onUpdate: (cells) {
-                print(cells);
+                // print(cells);
               },
             ),
           ),
