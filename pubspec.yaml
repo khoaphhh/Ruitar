@@ -87,3 +87,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  fonts:
+    - family: RobotoCondensed
+      fonts:
+        - asset: lib/fonts/RobotoCondensed-VariableFont_wght.ttf
+        - asset: lib/fonts/RobotoCondensed-Italic-VariableFont_wght.ttf
+          style: italic

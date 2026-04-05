@@ -79,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Text(
                             "$detectedChord",
                             style: const TextStyle(
+                              fontFamily: 'RobotoCondensed',
                               color: Color.fromARGB(200, 255, 255, 255),
                               fontSize: 40,
                               fontWeight: FontWeight.bold,

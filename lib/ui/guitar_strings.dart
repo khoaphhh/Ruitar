@@ -61,10 +61,9 @@ class _GuitarStrings extends State<GuitarStrings> {
           },
           
           child: Row(
-            children: List.generate(6, (index) {      //chia 6 phần
+            children: List.generate(6, (index) {      //chia 6 phần           //có thể thay bằng children: [Expanded(...), Expanded(...),]
               bool isBeingTouched = activeCells.values.contains(index);
               return Expanded(
-                
                 flex: 1,        //mỗi phần bằng nhau
                 child: AnimatedContainer(
                   duration: Duration(milliseconds: (isBeingTouched) ? 0 : 200),       //thêm duration và curve so với Container thông thường
@@ -72,25 +71,19 @@ class _GuitarStrings extends State<GuitarStrings> {
                   
                   decoration: BoxDecoration(
                     color: (isBeingTouched) ? Color.fromARGB(0, 0, 0, 0) : const Color.fromARGB(255, 0, 0, 0),
-                    border: Border.all(
-                      color: Color.fromARGB(100, 255, 255, 255),
-                      width: 2.0,
+                    border: Border(
+                      right: BorderSide(color: Color.fromARGB(100, 255, 255, 255), width: 1.0),
+                      left: BorderSide(color: Color.fromARGB(100, 255, 255, 255), width: 1.0),
+                      //bottom: BorderSide(color: Color.fromARGB(100, 255, 255, 255), width: 2.0),
+                      top: BorderSide(color: Color.fromARGB(100, 255, 255, 255), width: 4.0),
+                      // color: Color.fromARGB(100, 255, 255, 255),
+                      // width: 2.0,
                     ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      
-                      const SizedBox(height: 8),
-                      Text(
-                        'Ô $index',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
                   ),
                 ),
               );
             }),
+            
           ),
         );
       },
