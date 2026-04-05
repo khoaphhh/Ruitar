@@ -96,8 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             flex: 1,
             child: GuitarStrings(
-              onCellTapped: (int cellIndex) {
-                print('tín hiệu ở ô số: $cellIndex');
+              onUpdate: (cells) {
+                print(cells);
               },
             ),
           ),
