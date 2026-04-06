@@ -24,8 +24,9 @@ class _GuitarStrings extends State<GuitarStrings> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final double cellWidth = constraints.maxWidth / 6;//chiều rộng của 1 ô
-
+        
         return Listener(
+          behavior: HitTestBehavior.opaque,
           onPointerDown: (event) {      //khi chạm xuống
             int index = (event.localPosition.dx / cellWidth).floor(); //lấy tọa độ x chia cho chiều rộng của 1 ô và làm tròn xuống để ra index của ô
 
