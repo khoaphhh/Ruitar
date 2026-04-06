@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/trail_point.dart';
 import '../painters/trail_painter.dart';
 
+
 //typedef TouchCallback = void Function(Map<int, Offset> points);
 
 class TouchDetector extends StatefulWidget {

@@ -5,8 +5,9 @@ import 'ui/touch_detector.dart';
 import 'logic/calc_methods.dart';
 import 'package:ruitar/ui/guitar_strings.dart';
 import 'package:flutter/services.dart';
+import 'package:ruitar/audio/audio_player.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   runApp(const MaterialApp(home: HomeScreen()));
@@ -23,12 +24,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late TemplateStore store;
   String detectedChord = "none";
+  // final AudioPlayer audio = AudioPlayer();
 
   @override
   void initState() {
     super.initState();
     store = TemplateStore();
     store.loadTemplates(); 
+    //audio.initialize();
+  }
+
+  @override
+  void dispose() {
+    //audio.dispose();
+    super.dispose();
   }
 
   @override
@@ -102,11 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           Expanded(
             flex: 1,
-            child: GuitarStrings(
-              onUpdate: (cells) {
-                // print(cells);
-              },
-            ),
+            child: GuitarStrings(),
           ),
         ],
       ),

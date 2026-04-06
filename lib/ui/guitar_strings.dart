@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ruitar/audio/audio_player.dart';
 
 class GuitarStrings extends StatefulWidget  {
-  final Function(Map<int, int>) onUpdate; 
-  const GuitarStrings({super.key, required this.onUpdate});
+  const GuitarStrings({super.key});
+
 
   @override
   State<GuitarStrings> createState() {
@@ -12,11 +13,21 @@ class GuitarStrings extends StatefulWidget  {
 
 class _GuitarStrings extends State<GuitarStrings> {
   Map<int, int> activeCells = {};
-  
-  void triggerUpdate() {
-    widget.onUpdate(activeCells);
+  late AudioPlayer audio;
+
+
+  @override
+  void initState() {
+    super.initState();
+    audio = AudioPlayer(); 
+    audio.initialize();
   }
-  
+
+  @override
+  void dispose() {
+    audio.dispose(); 
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,20 +41,25 @@ class _GuitarStrings extends State<GuitarStrings> {
           onPointerDown: (event) {      //khi chạm xuống
             int index = (event.localPosition.dx / cellWidth).floor(); //lấy tọa độ x chia cho chiều rộng của 1 ô và làm tròn xuống để ra index của ô
 
-            setState(() {
-                activeCells[event.pointer] = index;
-            });
-            triggerUpdate();
+                audio.playSoundForCell(index);
+                print ("chạm vào ô $index");
+                setState(() {
+                  activeCells[event.pointer] = index;
+                });
+                
+
           },
           onPointerMove: (event) {      //khi lướt: nếu lướt trong ô thì không sao, lướt ra ô khác thì mới gọi handleTouch
             int index = (event.localPosition.dx / cellWidth).floor(); //lấy tọa độ x chia cho chiều rộng của 1 ô và làm tròn xuống để ra index của ô
 
             if (activeCells[event.pointer] != index) {
+                print ("chạm vào ô $index");
+                audio.playSoundForCell(index);
 
-              setState(() {
-                 activeCells[event.pointer] = index;
-              });
-              triggerUpdate();
+                setState(() {
+                  activeCells[event.pointer] = index;
+                });
+                
             }
           },
 
@@ -51,14 +67,12 @@ class _GuitarStrings extends State<GuitarStrings> {
             setState(() {
               activeCells.remove(event.pointer);
             });
-            triggerUpdate();
           },
 
           onPointerUp: (event) {
             setState(() {
               activeCells.remove(event.pointer);
             });
-            triggerUpdate();
           },
           
           child: Row(
