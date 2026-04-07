@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ruitar/audio/audio_player.dart';
 
 class GuitarStrings extends StatefulWidget  {
-  const GuitarStrings({super.key});
+  final String detectedChord;
+  const GuitarStrings({super.key,  required this.detectedChord});
 
 
   @override
@@ -41,8 +42,7 @@ class _GuitarStrings extends State<GuitarStrings> {
           onPointerDown: (event) {      //khi chạm xuống
             int index = (event.localPosition.dx / cellWidth).floor(); //lấy tọa độ x chia cho chiều rộng của 1 ô và làm tròn xuống để ra index của ô
 
-                audio.playSoundForCell(index);
-                print ("chạm vào ô $index");
+                audio.playSoundForCell(widget.detectedChord, index);
                 setState(() {
                   activeCells[event.pointer] = index;
                 });
@@ -53,8 +53,7 @@ class _GuitarStrings extends State<GuitarStrings> {
             int index = (event.localPosition.dx / cellWidth).floor(); //lấy tọa độ x chia cho chiều rộng của 1 ô và làm tròn xuống để ra index của ô
 
             if (activeCells[event.pointer] != index) {
-                print ("chạm vào ô $index");
-                audio.playSoundForCell(index);
+                audio.playSoundForCell(widget.detectedChord, index);
 
                 setState(() {
                   activeCells[event.pointer] = index;

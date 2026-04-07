@@ -4,27 +4,26 @@ import 'package:flutter/material.dart';
 
 
 class ChordStore {
-  List<ChordRecord> _chordStore = [];      //sắp xếp thứ tự theo norm của chord
+  final List<ChordRecord> _chordStore = []; 
 
 
   ChordStore();
 
   void loadRecords(List<ChordRecord> records) {
     for (ChordRecord record in records) {
-      _chordStore.add(record);      // Cây tự động xếp theo Norm
+      _chordStore.add(record);    
     }
   }
 
-  ChordRecord? findNearest(List<Offset> inputVector) {      //bảo đảm inputVector cùng số dimesion
-    //sau khi lọc trong khoảng norm rồi thì tính khoảng cách
+  ChordRecord? findNearest(List<Offset> inputVector) {   
     ChordRecord? bestMatch;
     double minDistance = double.infinity;
 
-    for (ChordRecord candidate in _chordStore) {
-      double dist = similarityScore(inputVector, candidate.vector);
+    for (ChordRecord cr in _chordStore) {
+      double dist = similarityScore(inputVector, cr.vector);
       if (dist < minDistance) {
         minDistance = dist;
-        bestMatch = candidate;
+        bestMatch = cr;
       }
     }
     return bestMatch;
@@ -43,14 +42,12 @@ class ChordStore {
     if (v1.length != v2.length) return double.infinity;
 
 
-    // 2. Tính Trọng tâm
     Offset centerV1 = getMidPoint(v1);
     Offset centerV2 = getMidPoint(v2);
 
-    // Độ lệch Vị trí bấm (Nếu bạn cần)
     double dPosition = (centerV2 - centerV1).distance;
 
-    // 3. Dịch chuyển toàn bộ tập điểm về quanh gốc (0,0)
+    //dịch về quanh gốc (0,0)
     List<Offset> normV1 = v1.map((Offset p) {
       return p - centerV1;
     }).toList();
@@ -58,12 +55,11 @@ class ChordStore {
       return p - centerV1;
     }).toList();
 
-    // 4. Tìm cách ghép cặp có tổng độ lệch nhỏ nhất (Thử mọi Hoán vị)
     double dShape = bestMatchPossible(normV1, normV2);
 
-    // --- BẢNG TRỌNG SỐ ---
-    double wPosition = 1.0; // Phạt nếu bấm sai vị trí ngăn đàn
-    double wShape = 1.0;    // Phạt nếu sai thế tay (sai tỷ lệ, sai khoảng cách ngón)
+    //trọng số
+    double wPosition = 1.0; 
+    double wShape = 1.0;
 
     return (dPosition * wPosition) + (dShape * wShape);
   }

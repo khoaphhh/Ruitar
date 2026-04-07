@@ -5,7 +5,6 @@ import 'ui/touch_detector.dart';
 import 'logic/calc_methods.dart';
 import 'package:ruitar/ui/guitar_strings.dart';
 import 'package:flutter/services.dart';
-import 'package:ruitar/audio/audio_player.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -86,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(   // dịch xuống
                           padding: EdgeInsets.only(top: 450),
                           child: Text(
-                            "$detectedChord",
+                            detectedChord,
                             style: const TextStyle(
                               fontFamily: 'RobotoCondensed',
                               color: Color.fromARGB(200, 255, 255, 255),
@@ -111,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           Expanded(
             flex: 1,
-            child: GuitarStrings(),
+            child: GuitarStrings(detectedChord: detectedChord),
           ),
         ],
       ),
